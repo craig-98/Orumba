@@ -59,29 +59,6 @@ load_posts()
 load_users()
 albums = []
 
-# Add sample album data with valid image content if albums is empty
-# if not albums:
-#     albums.append({
-#         'id': 1,
-#         'posts': [
-#             {
-#                 'id': 1,
-#                 'content': '<img src="/static/sample1.jpg" alt="Sample Image 1">',
-#                 'caption': 'Sample Image 1 Caption'
-#             },
-#             {
-#                 'id': 2,
-#                 'content': '<img src="/static/sample2.jpg" alt="Sample Image 2">',
-#                 'caption': 'Sample Image 2 Caption'
-#             },
-#             {
-#                 'id': 3,
-#                 'content': '<img src="/static/sample3.jpg" alt="Sample Image 3">',
-#                 'caption': 'Sample Image 3 Caption'
-#             }
-#         ]
-#     })
-
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 HTML_DIR = os.path.join(BASE_DIR, 'app', 'templates')
 
@@ -223,8 +200,6 @@ def api_albums():
     else:
         return jsonify({'status': 'success', 'albums': albums})
 
-import os
-
 @app.route('/list-static')
 def list_static():
     files = os.listdir(app.static_folder)
@@ -251,68 +226,6 @@ def serve_members():
 def serve_news_hub():
     return render_template('news_hub.html')
 
-import os
-
 if __name__ == '__main__':
-    import os
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
-
-# Removed duplicate route definition for /api/posts to fix AssertionError
-
-
-@app.route('/api/posts/search', methods=['GET'])
-def search_posts():
-    global posts
-    query = request.args.get('q', '').lower()
-    if not query:
-        return jsonify({'status': 'error', 'message': 'Query parameter q is required'}), 400
-    filtered = [p for p in posts if query in p['content'].lower()]
-    return jsonify({'status': 'success', 'posts': filtered})
-
-@app.route('/api/albums', methods=['GET', 'POST'])
-def api_albums():
-    global albums
-    if request.method == 'POST':
-        data = request.get_json()
-        album_posts = data.get('posts', [])
-        if not album_posts or len(album_posts) == 0:
-            return jsonify({'status': 'error', 'message': 'Album must contain at least one post'}), 400
-        if len(album_posts) > 10:
-            return jsonify({'status': 'error', 'message': 'Album cannot contain more than 10 posts'}), 400
-        album_id = len(albums) + 1
-        album = {
-            'id': album_id,
-            'posts': []
-        }
-        for idx, post in enumerate(album_posts):
-            content = post.get('content', '')
-            caption = post.get('caption', '')
-            if not content:
-                return jsonify({'status': 'error', 'message': f'Post {idx+1} content is required'}), 400
-            album['posts'].append({
-                'id': idx + 1,
-                'content': content,
-                'caption': caption
-            })
-        albums.append(album)
-        return jsonify({'status': 'success', 'album': album}), 201
-    else:
-        return jsonify({'status': 'success', 'albums': albums})
-
-import os
-
-@app.route('/list-static')
-def list_static():
-    files = os.listdir(app.static_folder)
-    return jsonify({'static_files': files})
-
-@app.route('/api/debug/albums', methods=['GET'])
-def debug_albums():
-    global albums
-    return jsonify({'status': 'success', 'albums': albums})
-
-if __name__ == '__main__':
-    import os
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
