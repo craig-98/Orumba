@@ -260,14 +260,6 @@ if __name__ == '__main__':
 
 # Removed duplicate route definition for /api/posts to fix AssertionError
 
-@app.route('/api/posts/<int:post_id>', methods=['GET'])
-def get_post(post_id):
-    global posts
-    post = next((p for p in posts if p['id'] == post_id), None)
-    if post:
-        return jsonify({'status': 'success', 'post': post})
-    else:
-        return jsonify({'status': 'error', 'message': 'Post not found'}), 404
 
 @app.route('/api/posts/search', methods=['GET'])
 def search_posts():
