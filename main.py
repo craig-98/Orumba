@@ -192,10 +192,12 @@ def api_albums():
             if not content:
                 return jsonify({'status': 'error', 'message': f'Post {idx+1} content is required'}), 400
             album['posts'].append({
-                'id': idx + 1,
-                'content': content,
-                'caption': caption
-            })
+                    'id': idx + 1,
+                    'content': content,
+                    'caption': caption,
+                    'image_url': url_for('static', filename=f'uploads/{content}', _external=False)
+                })
+
         albums.append(album)
         return jsonify({'status': 'success', 'album': album}), 201
     else:
