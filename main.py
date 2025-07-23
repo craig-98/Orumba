@@ -65,7 +65,7 @@ def login_required(f):
 load_posts()
 load_users()
 
-@app.route('/')
+@app.route('/home')
 def serve_home():
     return render_template('home.html')
 
@@ -270,6 +270,10 @@ def serve_members():
 @app.route('/news-hub')
 def serve_news_hub():
     return render_template('news_hub.html')
+
+@app.route('/services')
+def serve_services():
+    return render_template('services.html')
 
 @app.route('/api/public/posts', methods=['GET'])
 def api_public_posts():
