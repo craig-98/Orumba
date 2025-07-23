@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "posts": [
+      {
+        "image_url": "/static/uploads/testalbum.jpeg",
+        "caption": "",
+        "content": "Image post"
+      },
+      {
+        "image_url": "/static/uploads/pics1.jpeg",
+        "caption": "",
+        "content": "Image post"
+      },
+      {
+        "image_url": "/static/uploads/testalbum2.jpeg",
+        "caption": "",
+        "content": "Image post"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "posts": [
+      {
+        "image_url": "/static/uploads/orumba-header-bakground-image2.jpg",
+        "caption": "",
+        "content": "Image post"
+      },
+      {
+        "image_url": "/static/uploads/images8.jpeg",
+        "caption": "",
+        "content": "Image post"
+      },
+      {
+        "image_url": "/static/uploads/images6.jpeg",
+        "caption": "",
+        "content": "Image post"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "posts": [
+      {
+        "image_url": "/static/uploads/orumba-header-bakground-image2_1.jpg",
+        "caption": "",
+        "content": "Image post"
+      },
+      {
+        "image_url": "/static/uploads/images3.jpeg",
+        "caption": "",
+        "content": "Image post"
+      },
+      {
+        "image_url": "/static/uploads/images8_1.jpeg",
+        "caption": "",
+        "content": "Image post"
+      }
+    ]
+  }
+]

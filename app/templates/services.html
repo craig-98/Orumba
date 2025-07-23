@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Services - Orumba North</title>
+    <link rel="stylesheet" href="/static/futuristic-theme.css" />
+    <style>
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .service:hover,
+        .service:focus {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .service svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1rem;
+            fill: #ffdd57;
+        }
+        .service h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .service p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .contact-links a {
+            color: #ffdd57;
+            text-decoration: none;
+            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: rgba(255, 221, 87, 0.2);
+            transition: background-color 0.3s ease;
+        }
+        .contact-links a:hover,
+        .contact-links a:focus {
+            background-color: #ffdd57;
+            color: #222;
+        }
+        .contact-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+    {% include '_header.html' %}
+    <main>
+        <section id="services" class="services" aria-label="Services section">
+            <div class="service" tabindex="0">
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M32 2C15.4 2 2 15.4 2 32s13.4 30 30 30 30-13.4 30-30S48.6 2 32 2zm0 56c-14.3 0-26-11.7-26-26S17.7 6 32 6s26 11.7 26 26-11.7 26-26 26z"/>
+                    <path d="M44 20H20v4h24v-4zM44 28H20v4h24v-4zM44 36H20v4h24v-4z"/>
+                </svg>
+                <h3>Street Naming Permit</h3>
+                <p>Apply for official street naming permits with ease.</p>
+                <div class="contact-links">
+                    <a href="mailto:contact@orumba.gov" aria-label="Email Street Naming Permit">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/1234567890" target="_blank" rel="noopener" aria-label="WhatsApp Street Naming Permit">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12a11.94 11.94 0 001.64 6.12L0 24l5.88-1.56A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.2-3.48-8.52zM12 21.5a9.5 9.5 0 01-4.84-1.4l-.35-.21-3.5.93.93-3.5-.21-.35A9.5 9.5 0 1121.5 12 9.5 9.5 0 0112 21.5z"/>
+                            <path d="M17.5 14.5c-.3-.15-1.75-.85-2-.95s-.35-.15-.5.15-.6.95-.75 1.15-.3.2-.55.05a7.3 7.3 0 01-2.15-1.3 8.2 8.2 0 01-1.5-1.85c-.15-.25 0-.4.1-.55s.25-.3.35-.45a.6.6 0 00.1-.45c0-.15-.5-1.2-.7-1.65s-.35-.4-.5-.4-.3 0-.45 0a.9.9 0 00-.65.3 2.7 2.7 0 00-.85.65 3.6 3.6 0 00-1.05 2.15c0 1.25.65 2.45 1.5 3.3a6.3 6.3 0 004.25 1.75 5.3 5.3 0 002.25-.9 4.3 4.3 0 001.3-1.6c.15-.25.15-.45.1-.5s-.15-.1-.3-.15z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+1234567890" aria-label="Call Street Naming Permit">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="service" tabindex="0">
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <circle cx="32" cy="32" r="30" stroke="#ffdd57" stroke-width="2" fill="none"/>
+                    <path d="M20 44h24v4H20zM20 36h24v4H20zM20 28h24v4H20z"/>
+                </svg>
+                <h3>Private Vaults</h3>
+                <p>Secure and private vault services for your valuables.</p>
+                <div class="contact-links">
+                    <a href="mailto:contact@orumba.gov" aria-label="Email Private Vaults">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/1234567890" target="_blank" rel="noopener" aria-label="WhatsApp Private Vaults">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12a11.94 11.94 0 001.64 6.12L0 24l5.88-1.56A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.2-3.48-8.52zM12 21.5a9.5 9.5 0 01-4.84-1.4l-.35-.21-3.5.93.93-3.5-.21-.35A9.5 9.5 0 1121.5 12 9.5 9.5 0 0112 21.5z"/>
+                            <path d="M17.5 14.5c-.3-.15-1.75-.85-2-.95s-.35-.15-.5.15-.6.95-.75 1.15-.3.2-.55.05a7.3 7.3 0 01-2.15-1.3 8.2 8.2 0 01-1.5-1.85c-.15-.25 0-.4.1-.55s.25-.3.35-.45a.6.6 0 00.1-.45c0-.15-.5-1.2-.7-1.65s-.35-.4-.5-.4-.3 0-.45 0a.9.9 0 00-.65.3 2.7 2.7 0 00-.85.65 3.6 3.6 0 00-1.05 2.15c0 1.25.65 2.45 1.5 3.3a6.3 6.3 0 004.25 1.75 5.3 5.3 0 002.25-.9 4.3 4.3 0 001.3-1.6c.15-.25.15-.45.1-.5s-.15-.1-.3-.15z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+1234567890" aria-label="Call Private Vaults">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="service" tabindex="0">
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <rect x="12" y="12" width="40" height="40" rx="8" ry="8" stroke="#ffdd57" stroke-width="2" fill="none"/>
+                    <path d="M20 32h24v4H20zM20 24h24v4H20z"/>
+                </svg>
+                <h3>Birth Registration</h3>
+                <p>Register births officially with our streamlined process.</p>
+                <div class="contact-links">
+                    <a href="mailto:contact@orumba.gov" aria-label="Email Birth Registration">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/1234567890" target="_blank" rel="noopener" aria-label="WhatsApp Birth Registration">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12a11.94 11.94 0 001.64 6.12L0 24l5.88-1.56A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.2-3.48-8.52zM12 21.5a9.5 9.5 0 01-4.84-1.4l-.35-.21-3.5.93.93-3.5-.21-.35A9.5 9.5 0 1121.5 12 9.5 9.5 0 0112 21.5z"/>
+                            <path d="M17.5 14.5c-.3-.15-1.75-.85-2-.95s-.35-.15-.5.15-.6.95-.75 1.15-.3.2-.55.05a7.3 7.3 0 01-2.15-1.3 8.2 8.2 0 01-1.5-1.85c-.15-.25 0-.4.1-.55s.25-.3.35-.45a.6.6 0 00.1-.45c0-.15-.5-1.2-.7-1.65s-.35-.4-.5-.4-.3 0-.45 0a.9.9 0 00-.65.3 2.7 2.7 0 00-.85.65 3.6 3.6 0 00-1.05 2.15c0 1.25.65 2.45 1.5 3.3a6.3 6.3 0 004.25 1.75 5.3 5.3 0 002.25-.9 4.3 4.3 0 001.3-1.6c.15-.25.15-.45.1-.5s-.15-.1-.3-.15z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+1234567890" aria-label="Call Birth Registration">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="service" tabindex="0">
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <circle cx="32" cy="32" r="30" stroke="#ffdd57" stroke-width="2" fill="none"/>
+                    <path d="M20 44h24v4H20zM20 36h24v4H20zM20 28h24v4H20z"/>
+                </svg>
+                <h3>Other Services Chargeable Taxes and Levies</h3>
+                <p>Information and processing for various chargeable taxes and levies.</p>
+                <div class="contact-links">
+                    <a href="mailto:contact@orumba.gov" aria-label="Email Taxes and Levies">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/1234567890" target="_blank" rel="noopener" aria-label="WhatsApp Taxes and Levies">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.37 0 0 5.37 0 12a11.94 11.94 0 001.64 6.12L0 24l5.88-1.56A11.94 11.94 0 0012 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.2-3.48-8.52zM12 21.5a9.5 9.5 0 01-4.84-1.4l-.35-.21-3.5.93.93-3.5-.21-.35A9.5 9.5 0 1121.5 12 9.5 9.5 0 0112 21.5z"/>
+                            <path d="M17.5 14.5c-.3-.15-1.75-.85-2-.95s-.35-.15-.5.15-.6.95-.75 1.15-.3.2-.55.05a7.3 7.3 0 01-2.15-1.3 8.2 8.2 0 01-1.5-1.85c-.15-.25 0-.4.1-.55s.25-.3.35-.45a.6.6 0 00.1-.45c0-.15-.5-1.2-.7-1.65s-.35-.4-.5-.4-.3 0-.45 0a.9.9 0 00-.65.3 2.7 2.7 0 00-.85.65 3.6 3.6 0 00-1.05 2.15c0 1.25.65 2.45 1.5 3.3a6.3 6.3 0 004.25 1.75 5.3 5.3 0 002.25-.9 4.3 4.3 0 001.3-1.6c.15-.25.15-.45.1-.5s-.15-.1-.3-.15z"/>
+                        </svg>
+                    </a>
+                    <a href="tel:+1234567890" aria-label="Call Taxes and Levies">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

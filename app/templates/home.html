@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Official Orumba North page</title>
+    <link rel="stylesheet" href="/static/futuristic-theme.css" />
+    <!-- Removed original styles.css to avoid conflict with futuristic theme -->
+    <!-- <link rel="stylesheet" href="/static/styles.css" /> -->
+    <script>
+        // Hamburger menu toggle
+        function toggleMenu() {
+            const nav = document.getElementById('nav-menu');
+            nav.classList.toggle('active');
+        }
+        // Close menu when clicking a link (for better UX)
+        function closeMenu() {
+            const nav = document.getElementById('nav-menu');
+            nav.classList.remove('active');
+        }
+    </script>
+</head>
+<body>
+{% include '_header.html' %}
+    <main>
+        <section id="hero" class="hero" role="banner" aria-label="Hero section">
+            <div id="hero-background-slider" aria-hidden="true"></div>
+            <h1>Welcome to Orumba North</h1>
+            <p>Meet the current Local Government Chairman,  Cap Bar Casmir-Nwafor Chinonso,and his all efficient team dedicated to the progress and prosperity of our community.</p>
+            <a href="/members" class="btn-primary" role="button">Take a Look</a>
+            <style>
+                #hero-background-slider {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-size: cover;
+                    background-position: center;
+                    z-index: -1;
+                    filter: brightness(0.6);
+                    transition: background-image 1s ease-in-out;
+                }
+                .hero {
+                    position: relative;
+                    z-index: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    padding: 4rem 2rem;
+                    color: white;
+                    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.85);
+                }
+                .hero h1 {
+                    font-size: 3rem;
+                    margin-bottom: 1rem;
+                    font-weight: 700;
+                }
+                .hero p {
+                    font-size: 1.25rem;
+                    max-width: 600px;
+                    margin-bottom: 2rem;
+                }
+                .btn-primary {
+                    background-color: var(--color-secondary);
+                    color: var(--color-primary);
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 8px;
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                    text-decoration: none;
+                    transition: background-color 0.3s ease;
+                    box-shadow: 0 0 10px 3px rgba(230, 230, 0, 0.8);
+                }
+                .btn-primary:hover,
+                .btn-primary:focus {
+                    background-color: #e6e600;
+                    outline: none;
+                    box-shadow: 0 0 15px 5px rgba(230, 230, 0, 1);
+                }
+            </style>
+            <script>
+                (function() {
+                    const images = [
+                        '/static/images/orumba-header-bakground-image3.jpg',
+                        '/static/images/orumba-header-bakground-image2.jpg',
+                        '/static/images/orumba-header-bakground-image.jpg'
+                    ];
+                    let currentIndex = 0;
+                    const slider = document.getElementById('hero-background-slider');
+                    function changeBackground() {
+                        slider.style.backgroundImage = `url('${images[currentIndex]}')`;
+                        currentIndex = (currentIndex + 1) % images.length;
+                    }
+                    changeBackground();
+                    setInterval(changeBackground, 5000);
+                })();
+            </script>
+        </section>
+        <section id="features" class="features" aria-label="Features section">
+            <style>
+                /* Advanced styling for features section */
+                .features {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                    gap: 2rem;
+                    max-width: 900px;
+                    margin: 2rem auto;
+                    padding: 2rem;
+                    background: linear-gradient(135deg, #004d00 0%, #66ff66 100%);
+                    border-radius: 16px;
+                    box-shadow: 0 8px 24px rgba(0, 77, 0, 0.6);
+                }
+                .feature {
+                    background-color: rgba(255, 255, 255, 0.15);
+                    border-radius: 12px;
+                    padding: 1.5rem;
+                    box-shadow: 0 4px 15px rgba(0, 77, 0, 0.3);
+                    text-align: center;
+                    color: white;
+                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                    cursor: default;
+                }
+                .feature:hover,
+                .feature:focus {
+                    transform: translateY(-10px);
+                    box-shadow: 0 10px 30px #ffff00cc;
+                    background-color: rgba(255, 255, 255, 0.25);
+                    outline: none;
+                }
+                .features svg {
+                    width: 64px;
+                    height: 64px;
+                    margin-bottom: 1rem;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    stroke: #ffff00;
+                    fill: #ffff00;
+                }
+                .feature h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 0.75rem;
+                    font-weight: 700;
+                    text-shadow: 1px 1px 3px #004d00;
+                }
+                .feature p {
+                    font-size: 1rem;
+                    line-height: 1.4;
+                    color: #e6ffe6;
+                }
+            </style>
+            <div class="feature" tabindex="0">
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <circle cx="32" cy="32" r="30" stroke="#ffff00" stroke-width="4" fill="none"/>
+                    <path d="M20 32 L28 40 L44 24" stroke="#ffff00" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>Warm and Welcoming People</h3>
+                <p>The people of Orumba North are known for their kindness, hospitality, and strong community spirit.</p>
+            </div>
+            <div class="feature" tabindex="0">
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <circle cx="32" cy="32" r="30" stroke="#ffff00" stroke-width="4" fill="none"/>
+                    <path d="M32 16 L32 48" stroke="#ffff00" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M16 32 L48 32" stroke="#ffff00" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+                <h3>Beautiful Landscapes</h3>
+                <p>Orumba North boasts stunning natural beauty with lush greenery, hills, and scenic views.</p>
+            </div>
+            <div class="feature" tabindex="0">
+                <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <circle cx="32" cy="32" r="30" stroke="#ffff00" stroke-width="4" fill="none"/>
+                    <path d="M20 44 L44 44 L32 20 Z" fill="#ffff00"/>
+                </svg>
+                <h3>Rich Cultural Heritage</h3>
+                <p>Experience the vibrant traditions, festivals, and history that make Orumba North unique.</p>
+            </div>
+        </section>
+        <section id="posts" class="posts latest-posts-section" aria-label="Latest Posts section">
+            <h2 class="latest-posts-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 8px;">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                Latest Posts
+            </h2>
+            <div id="posts-container" class="posts-container-grid">
+                <!-- Post snippets will be dynamically inserted here -->
+            </div>
+            <script>
+                async function fetchLatestPostSnippets() {
+                    try {
+                        const response = await fetch('/api/posts');
+                        const data = await response.json();
+                        if (data.status === 'success') {
+                            const posts = data.posts.slice(-6).reverse();
+                            renderPostSnippets(posts);
+                        } else {
+                            console.error('Failed to load posts:', data.message);
+                        }
+                    } catch (error) {
+                        console.error('Error fetching posts:', error);
+                    }
+                }
+
+                function renderPostSnippets(posts) {
+                    const container = document.getElementById('posts-container');
+                    container.innerHTML = '';
+                    posts.forEach(post => {
+                        const snippetDiv = document.createElement('div');
+                        snippetDiv.tabIndex = 0;
+                        snippetDiv.setAttribute('role', 'link');
+                        snippetDiv.setAttribute('aria-label', `View full post titled ${post.title || 'Untitled'} by ${post.username || 'Unknown'} on ${post.published_at ? new Date(post.published_at).toLocaleString() : 'Unknown date'}`);
+                        snippetDiv.addEventListener('click', () => {
+                            window.location.href = `/news-hub#post-${post.id}`;
+                        });
+                        snippetDiv.addEventListener('keypress', (e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                window.location.href = `/news-hub#post-${post.id}`;
+                            }
+                        });
+
+                        const snippetText = post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content;
+                        snippetDiv.innerHTML = `
+                            <h3>${post.title || 'Untitled'}</h3>
+                            <div class="post-meta">Posted by ${post.username || 'Unknown'} on ${post.published_at ? new Date(post.published_at).toLocaleString() : 'Unknown date'}</div>
+                            <p>${snippetText}</p>
+                        `;
+                        container.appendChild(snippetDiv);
+                    });
+                }
+
+                window.addEventListener('DOMContentLoaded', fetchLatestPostSnippets);
+            </script>
+        </section>
+
+        <section id="contact" class="about" aria-label="Contact section">
+            <style>
+                #contact {
+                    max-width: 900px;
+                    margin: 2rem auto;
+                    padding: 2rem;
+                    background-color: #e6ffe6;
+                    border-radius: 12px;
+                    box-shadow: 0 8px 24px rgba(0, 77, 0, 0.2);
+                    color: var(--color-primary);
+                }
+                #contact h2 {
+                    font-size: 2rem;
+                    margin-bottom: 1rem;
+                    text-align: center;
+                    text-shadow: 1px 1px 3px #ccffcc;
+                }
+                #contact p {
+                    font-size: 1.1rem;
+                    line-height: 1.5;
+                    max-width: 700px;
+                    margin: 0 auto;
+                }
+                #contact .social-links {
+                    margin-top: 1rem;
+                    text-align: center;
+                }
+                #contact .social-links a {
+                    margin: 0 0.5rem;
+                    color: var(--color-primary);
+                    text-decoration: none;
+                    font-size: 1.5rem;
+                    transition: color 0.3s ease;
+                }
+                #contact .social-links a:hover,
+                #contact .social-links a:focus {
+                    color: #004d00;
+                    outline: none;
+                }
+            </style>
+            <h2>Contact Us</h2>
+            <p>Reach out to learn more about our services or to start your next project with us.</p>
+            <p>Email: taurustech4@gmail.com | Phone: (234) 805-474-0552</p>
+            <div class="social-links" aria-label="Social media links">
+                <a href="https://facebook.com/taurustech" target="_blank" rel="noopener" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.333v21.333C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.894-4.788 4.659-4.788 1.325 0 2.466.099 2.797.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.31h3.59l-.467 3.622h-3.123V24h6.116c.728 0 1.325-.597 1.325-1.334V1.333C24 .597 23.403 0 22.675 0z"/>
+                    </svg>
+                </a>
+                <a href="https://twitter.com/taurustech" target="_blank" rel="noopener" aria-label="Twitter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M24 4.557a9.83 9.83 0 01-2.828.775 4.932 4.932 0 002.165-2.724c-.951.555-2.005.959-3.127 1.184a4.916 4.916 0 00-8.38 4.482A13.94 13.94 0 011.671 3.149a4.916 4.916 0 001.523 6.574 4.897 4.897 0 01-2.228-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 01-2.224.084 4.918 4.918 0 004.59 3.417A9.867 9.867 0 010 19.54a13.94 13.94 0 007.548 2.209c9.142 0 14.307-7.721 13.995-14.646A9.936 9.936 0 0024 4.557z"/>
+                    </svg>
+                </a>
+                <a href="https://instagram.com/taurustech" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.35 3.608 1.325.975.975 1.263 2.242 1.325 3.608.058 1.266.07 1.645.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.35 2.633-1.325 3.608-.975.975-2.242 1.263-3.608 1.325-1.266.058-1.645.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.35-3.608-1.325-.975-.975-1.263-2.242-1.325-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.35-2.633 1.325-3.608.975-.975 2.242-1.263 3.608-1.325C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.013 7.052.072 5.775.13 4.602.443 3.515 1.53 2.428 2.617 2.115 3.79 2.057 5.067.998 6.347.985 6.756.985 10.015s.013 3.668.072 4.948c.058 1.277.371 2.45 1.458 3.537 1.087 1.087 2.26 1.4 3.537 1.458 1.28.059 1.689.072 4.948.072s3.668-.013 4.948-.072c1.277-.058 2.45-.371 3.537-1.458 1.087-1.087 1.4-2.26 1.458-3.537.059-1.28.072-1.689.072-4.948s-.013-3.668-.072-4.948c-.058-1.277-.371-2.45-1.458-3.537-1.087-1.087-2.26-1.4-3.537-1.458C15.668.013 15.259 0 12 0z"/>
++                    </svg>
++                </a>
++                <a href="https://linkedin.com/company/taurustech" target="_blank" rel="noopener" aria-label="LinkedIn">
++                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
++                        <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.37-1.852 3.602 0 4.268 2.37 4.268 5.455v6.288zM5.337 7.433a2.07 2.07 0 11.001-4.141 2.07 2.07 0 01-.001 4.141zm1.777 13.019H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
++                    </svg>
++                </a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <style>
+            footer {
+                background-color: var(--color-primary);
+                color: var(--color-secondary);
+                text-align: center;
+                padding: 1rem 2rem;
+                font-size: 0.9rem;
+                box-shadow: 0 -2px 8px rgba(0, 77, 0, 0.5);
+                margin-top: auto;
+            }
+        </style>
+        &copy; 2024 Taurustech. All rights reserved.
+    </footer>
+    <script>
+        // Fetch and display posts dynamically
+        function renderPosts(posts) {
+            const container = document.getElementById('posts-container');
+            container.innerHTML = '';
+        posts.forEach(post => {
+            const postDiv = document.createElement('div');
+            postDiv.style.background = '#2c2c4a';
+            postDiv.style.padding = '1rem';
+            postDiv.style.borderRadius = '12px';
+            postDiv.style.color = '#eee';
+            postDiv.style.boxShadow = '0 4px 12px rgba(44, 44, 74, 0.5)';
+            postDiv.innerHTML = post.content;
+            container.prepend(postDiv);
+        });
+        }
+
+        // Removed old fetchPosts function and its invocation to prevent full posts rendering on home page
+        // The new snippet rendering function fetchLatestPostSnippets is used instead
+    </script>
+    <style>
+        /* Additional styles for hamburger menu and responsiveness */
+        .hamburger {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+            padding: 0;
+            margin-left: auto;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        nav ul li a {
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            color: white;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ffdd57;
+        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            nav {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                background: #0a0a0a;
+                width: 200px;
+                height: calc(100% - 60px);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.7);
+                z-index: 999;
+            }
+            nav.active {
+                transform: translateX(0);
+            }
+            nav ul {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 2rem 1rem;
+            }
+            nav ul li a {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</body>
+</html>

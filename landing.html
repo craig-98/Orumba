@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Animated Landing Page</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body, html {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: white;
+            overflow-x: hidden;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+        }
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s forwards 0.3s;
+        }
+        p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s forwards 0.6s;
+        }
+        .btn {
+            margin-top: 2rem;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1f1c2c;
+            background: #ffdd57;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 1s forwards 0.9s;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #f0c419;
+        }
+        /* Background animated circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 221, 87, 0.15);
+            animation: float 6s ease-in-out infinite;
+        }
+        .circle1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+        .circle2 {
+            width: 300px;
+            height: 300px;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        .circle3 {
+            width: 150px;
+            height: 150px;
+            top: 40%;
+            right: 30%;
+            animation-delay: 1.5s;
+        }
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        /* Smooth scroll for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+    <body>
+        <video autoplay muted loop id="background-video" aria-label="Background video showing Orumba North scenery">
+            <source src="orumba_north_scenery.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="container" role="banner" aria-label="Landing page banner">
+            <h1>Welcome to Orumba North</h1>
+            <p>Meet the current Local Government Chairman, Mr. John Doe, dedicated to the progress and prosperity of our community.</p>
+            <button class="btn" onclick="alert('Learn more about our leadership!')">Learn More</button>
+        </div>
+        <style>
+            #background-video {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                min-width: 100%;
+                min-height: 100%;
+                width: auto;
+                height: auto;
+                z-index: -1;
+                object-fit: cover;
+                filter: brightness(0.6);
+            }
+            .container {
+                position: relative;
+                z-index: 1;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                padding: 0 2rem;
+                color: white;
+            }
+            h1 {
+                font-size: 3.5rem;
+                margin-bottom: 1rem;
+                animation: fadeUp 1s forwards 0.3s;
+            }
+            p {
+                font-size: 1.25rem;
+                max-width: 600px;
+                margin-bottom: 2rem;
+                animation: fadeUp 1s forwards 0.6s;
+            }
+            .btn {
+                padding: 1rem 3rem;
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: #1f1c2c;
+                background: #ffdd57;
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+                animation: fadeUp 1s forwards 0.9s;
+                transition: background 0.3s ease;
+            }
+            .btn:hover {
+                background: #f0c419;
+            }
+            @keyframes fadeUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        </style>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery</title>
+  <link rel="stylesheet" href="/static/futuristic-theme.css" />
+  <style>
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      max-width: 600px;
+      margin: 1rem auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease;
+      width: 100%;
+    }
+    .carousel-images img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 8px;
+    }
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--color-primary);
+      border: none;
+      color: var(--color-secondary);
+      font-size: 1.5rem;
+      padding: 0 0.5rem;
+      cursor: pointer;
+      border-radius: 50%;
+      user-select: none;
+      z-index: 10;
+    }
+    .carousel-button.prev {
+      left: 10px;
+    }
+    .carousel-button.next {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    {% include '_header.html' %}
+  </header>
+  <main>
+    <h1 style="text-align: center;">Gallery</h1>
+    <div id="albumsContainer" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
+      <!-- Albums will be rendered here -->
+    </div>
+  </main>
+  <script>
+    async function fetchAlbums() {
+      const res = await fetch('/api/albums');
+      const data = await res.json();
+      if (data.status !== 'success') {
+        alert('Failed to load albums: ' + data.message);
+        return [];
+      }
+      return data.albums;
+    }
+
+    function createCarousel(album) {
+      const carousel = document.createElement('div');
+      carousel.className = 'carousel';
+
+      const imagesContainer = document.createElement('div');
+      imagesContainer.className = 'carousel-images';
+
+      album.posts.forEach(post => {
+        const img = document.createElement('img');
+        img.src = post.image_url;
+        img.alt = post.caption || 'Album image';
+        imagesContainer.appendChild(img);
+      });
+
+      carousel.appendChild(imagesContainer);
+
+      const prevBtn = document.createElement('button');
+      prevBtn.className = 'carousel-button prev';
+      prevBtn.innerHTML = '&#10094;';
+      carousel.appendChild(prevBtn);
+
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'carousel-button next';
+      nextBtn.innerHTML = '&#10095;';
+      carousel.appendChild(nextBtn);
+
+      let currentIndex = 0;
+
+      function updateCarousel() {
+        const width = imagesContainer.clientWidth;
+        imagesContainer.style.transform = `translateX(-${currentIndex * width}px)`;
+      }
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + album.posts.length) % album.posts.length;
+        updateCarousel();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % album.posts.length;
+        updateCarousel();
+      });
+
+      window.addEventListener('resize', updateCarousel);
+
+      return carousel;
+    }
+
+    async function renderAlbums() {
+      const albums = await fetchAlbums();
+      const container = document.getElementById('albumsContainer');
+      container.innerHTML = '';
+      albums.forEach(album => {
+        const albumDiv = document.createElement('div');
+        albumDiv.className = 'album';
+        albumDiv.style.width = '220px';
+        albumDiv.style.border = '1px solid #ccc';
+        albumDiv.style.borderRadius = '8px';
+        albumDiv.style.padding = '8px';
+        albumDiv.style.boxShadow = '0 2px 6px rgba(0,0,0,0.1)';
+        albumDiv.style.transition = 'transform 0.2s';
+        albumDiv.style.backgroundColor = '#fff';
+
+        const header = document.createElement('h2');
+        header.className = 'album-header';
+        header.style.fontSize = '1.2rem';
+        header.style.marginTop = '6px';
+        header.style.marginBottom = '4px';
+        header.style.textAlign = 'center';
+        header.style.color = '#222';
+        header.style.fontWeight = 'bold';
+        header.style.backgroundColor = '';
+        header.style.padding = '';
+        header.style.borderRadius = '';
+        header.style.color = '#000000';
+        header.textContent = album.posts.length > 0 ? album.posts[0].author : `Album ${album.id}`;
+        albumDiv.appendChild(header);
+
+        const carousel = createCarousel(album);
+        albumDiv.appendChild(carousel);
+
+        container.appendChild(albumDiv);
+      });
+    }
+
+    renderAlbums();
+  </script>
+</body>
+</html>

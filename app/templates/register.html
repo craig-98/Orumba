@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register - Orumba North</title>
+    <link rel="stylesheet" href="/static/futuristic-theme.css" />
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #eee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .register-container {
+            background: #12121f;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(44, 44, 74, 0.7);
+            width: 320px;
+        }
+        h1 {
+            color: #ffdd57;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            border: none;
+            font-size: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #ffdd57;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            color: #0a0a0a;
+            transition: background-color 0.3s ease;
+        }
+        button:hover,
+        button:focus {
+            background-color: #e6e600;
+            outline: none;
+        }
+        .message {
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+        .link {
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .link a {
+            color: #ffdd57;
+            text-decoration: none;
+        }
+        .link a:hover,
+        .link a:focus {
+            text-decoration: underline;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container" role="main" aria-labelledby="register-title">
+        <h1 id="register-title">Register</h1>
+        <form id="register-form" aria-describedby="register-message">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required autocomplete="username" />
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required autocomplete="new-password" />
+            <button type="submit">Register</button>
+            <div id="register-message" class="message" role="alert" aria-live="assertive"></div>
+        </form>
+        <div class="link">
+            <p>Already have an account? <a href="/login">Login here</a></p>
+        </div>
+    </div>
+    <script>
+        const form = document.getElementById('register-form');
+        const messageDiv = document.getElementById('register-message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            messageDiv.textContent = '';
+            const username = form.username.value.trim();
+            const password = form.password.value.trim();
+
+            if (!username || !password) {
+                messageDiv.textContent = 'Please enter both username and password.';
+                return;
+            }
+
+            try {
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await response.json();
+                if (data.status === 'success') {
+                    messageDiv.style.color = 'limegreen';
+                    messageDiv.textContent = 'Registration successful! Redirecting to login...';
+                    setTimeout(() => {
+                        window.location.href = '/login';
+                    }, 1500);
+                } else {
+                    messageDiv.style.color = 'red';
+                    messageDiv.textContent = data.message || 'Registration failed.';
+                }
+            } catch (error) {
+                messageDiv.style.color = 'red';
+                messageDiv.textContent = 'An error occurred. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>

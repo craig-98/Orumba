@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Magazine Albums</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 1rem;
+      background: #f9f9f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin-bottom: 1.5rem;
+    }
+    .albums-container {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .album {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      width: 300px;
+      padding: 1rem;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .album-header {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      user-select: none;
+    }
+    .image-container {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .image-container img {
+      max-height: 160px;
+      max-width: 100%;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+    .caption {
+      font-size: 0.9rem;
+      color: #555;
+      text-align: center;
+      min-height: 2rem;
+      margin-bottom: 1rem;
+    }
+    .next-button {
+      background: #ffcc00;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s ease;
+    }
+    .next-button:hover {
+      background: #e6b800;
+    }
+  </style>
+</head>
+<body>
+  <h1>Magazine Albums</h1>
+  <div class="albums-container" id="albumsContainer">
+    <!-- Albums will be rendered here -->
+  </div>
+
+  <script>
+    async function fetchAlbums() {
+      try {
+        const response = await fetch('/api/albums');
+        const data = await response.json();
+        if (data.status === 'success') {
+          renderAlbums(data.albums);
+        } else {
+          console.error('Failed to load albums:', data.message);
+          document.getElementById('albumsContainer').innerHTML = '<p style="text-align:center; color:#999;">Failed to load albums.</p>';
+        }
+      } catch (error) {
+        console.error('Error fetching albums:', error);
+        document.getElementById('albumsContainer').innerHTML = '<p style="text-align:center; color:#999;">Error loading albums.</p>';
+      }
+    }
+
+    function createAlbumElement(album) {
+      const albumDiv = document.createElement('div');
+      albumDiv.className = 'album';
+
+      const header = document.createElement('div');
+      header.className = 'album-header';
+      header.textContent = `Album #${album.id}`;
+      albumDiv.appendChild(header);
+
+      const imageContainer = document.createElement('div');
+      imageContainer.className = 'image-container';
+
+      const img = document.createElement('img');
+      img.alt = 'Album image';
+      imageContainer.appendChild(img);
+
+      const caption = document.createElement('div');
+      caption.className = 'caption';
+
+      albumDiv.appendChild(imageContainer);
+      albumDiv.appendChild(caption);
+
+      const nextButton = document.createElement('button');
+      nextButton.className = 'next-button';
+      nextButton.textContent = 'Next';
+      albumDiv.appendChild(nextButton);
+
+      let currentIndex = 0;
+
+      function updateImage() {
+        if (album.posts.length === 0) {
+          img.src = '';
+          caption.textContent = 'No images in album';
+          nextButton.disabled = true;
+          return;
+        }
+        const post = album.posts[currentIndex];
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = post.content;
+        const imgTag = tempDiv.querySelector('img');
+        if (imgTag) {
+          img.src = imgTag.src;
+        } else {
+          img.src = '';
+        }
+        caption.textContent = post.caption || '';
+      }
+
+      nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % album.posts.length;
+        updateImage();
+      });
+
+      updateImage();
+
+      return albumDiv;
+    }
+
+    function renderAlbums(albums) {
+      const container = document.getElementById('albumsContainer');
+      container.innerHTML = '';
+      if (albums.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#999;">No albums available yet.</p>';
+        return;
+      }
+      albums.forEach(album => {
+        const albumElement = createAlbumElement(album);
+        container.appendChild(albumElement);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', fetchAlbums);
+  </script>
+</body>
+</html>

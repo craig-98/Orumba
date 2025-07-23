@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "content": "<p><br></p><p><a href=\"https://saharareporters.com/news\" target=\"_blank\" style=\"background-color: rgb(10, 10, 10); color: white;\"><strong>News</strong></a></p><p>He had spent eight years in custody facing accusations of human trafficking, sexual assault, and restricting the movement of his followers.</p><p>Nigerian-born televangelist, Timothy Omotoso, acquitted of raping young women from his church, has left South Africa as the National Prosecuting Authority (NPA) prepares to challenge the court ruling that set him free.</p><p>&nbsp;</p><p><br></p>"
+  },
+  {
+    "id": 2,
+    "title": "dbf",
+    "content": "<p>Error creating post: SyntaxError: Unexpected token '&lt;', \"&lt;!doctype \"... is not valid JSON</p><p><br></p>",
+    "author": "Ken",
+    "published_at": "2025-05-20T01:35:24.940715Z"
+  },
+  {
+    "id": 3,
+    "title": "Test Post Authenticated",
+    "content": "This is a test post content with authentication.",
+    "author": "testuser",
+    "published_at": "2025-06-19T04:56:49.165779Z"
+  }
+]

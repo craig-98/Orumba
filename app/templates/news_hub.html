@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>News Hub - All Posts</title>
+  <link rel="stylesheet" href="/static/futuristic-theme.css" />
+  <style>
+    .post-card {
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    {% include '_header.html' %}
+  </header>
+  <div class="news-hub-container">
+    <div class="posts-section">
+  <div id="postsContainer" aria-live="polite" aria-atomic="true">
+    <!-- Posts will be rendered here -->
+  </div>
+    </div>
+    <aside class="search-section">
+      <div style="position: relative;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="position: absolute; top: 50%; left: 8px; transform: translateY(-50%); pointer-events: none; color: #666;">
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242 1.106a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+        </svg>
+        <input type="text" id="searchBar" placeholder="Search posts..." aria-label="Search posts" class="search-bar" style="padding-left: 30px;" />
+      </div>
+      <div id="googleAds">Google Ads Placeholder</div>
+    </aside>
+  </div>
+  <script>
+    let allPosts = [];
+
+    async function fetchPosts() {
+      try {
+        const response = await fetch('/api/public/posts');
+        const data = await response.json();
+        if (data.status === 'success') {
+          allPosts = data.posts;
+          renderPosts(allPosts);
+        } else {
+          document.getElementById('postsContainer').innerHTML = '<p class="no-posts">Failed to load posts.</p>';
+        }
+      } catch (error) {
+        document.getElementById('postsContainer').innerHTML = '<p class="no-posts">Error loading posts.</p>';
+      }
+    }
+
+    function renderPosts(posts) {
+      const container = document.getElementById('postsContainer');
+      container.innerHTML = '';
+      if (posts.length === 0) {
+        container.innerHTML = '<p class="no-posts">No posts found.</p>';
+        return;
+      }
+      posts.forEach(post => {
+        const postDiv = document.createElement('div');
+        postDiv.className = 'post-card';
+
+        const postMeta = document.createElement('div');
+        postMeta.className = 'post-meta';
+        postMeta.textContent = `Posted by ${post.username} on ${new Date(post.published_at).toLocaleString()}`;
+        postDiv.appendChild(postMeta);
+
+        const content = document.createElement('p');
+        content.innerHTML = post.content;
+        postDiv.appendChild(content);
+
+        container.appendChild(postDiv);
+      });
+    }
+
+    function filterPosts(query) {
+      const filtered = allPosts.filter(post => post.content.toLowerCase().includes(query.toLowerCase()));
+      renderPosts(filtered);
+    }
+
+    document.getElementById('searchBar').addEventListener('input', (e) => {
+      filterPosts(e.target.value);
+    });
+
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+      hamburger.setAttribute('aria-expanded', !expanded);
+      navMenu.classList.toggle('active');
+      document.querySelector('nav').classList.toggle('active');
+    });
+
+    window.addEventListener('DOMContentLoaded', fetchPosts);
+  </script>
+</body>
+</html>

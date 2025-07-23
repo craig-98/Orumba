@@ -1,0 +1,165 @@
+<header>
+    <a href="/" class="logo-link" aria-label="Homepage">
+        <img src="/static/images/orumba-north-logo.jpg" alt="Orumba North Logo" class="logo-image"  />
+    </a>
+    <button id="hamburger-btn" class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+        <svg width="30" height="30" viewBox="0 0 100 80" fill="#ffdd57" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <rect width="100" height="15"></rect>
+            <rect y="30" width="100" height="15"></rect>
+            <rect y="60" width="100" height="15"></rect>
+        </svg>
+    </button>
+    <nav id="nav-menu" aria-label="Primary navigation" class="nav-menu">
+        <ul id="nav-list">
+            <li><a href="#hero" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M8 3.293l6 6V13a1 1 0 0 1-1 1h-3v-3H6v3H3a1 1 0 0 1-1-1v-3.707l6-6z"/>
+                    <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6 6a1 1 0 0 1-1.414 1.414L8 3.207 2.707 8.914A1 1 0 0 1 1.293 7.5l6-6z"/>
+                </svg>
+                Home
+            </a></li>
+            <li><a href="#features" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <circle cx="8" cy="8" r="3"/>
+                    <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.5 3.5l1.5 1.5M11 11l1.5 1.5M3.5 12.5l1.5-1.5M11 5l1.5-1.5"/>
+                </svg>
+                Features
+            </a></li>
+            <li><a href="#about" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <circle cx="8" cy="8" r="7" stroke="#ffdd57" stroke-width="1" fill="none"/>
+                    <path d="M8 4a1 1 0 0 1 1 1v3a1 1 0 0 1-2 0V5a1 1 0 0 1 1-1zM8 11a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1z"/>
+                </svg>
+                About
+            </a></li>
+            <li><a href="#contact" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M2 2h12v12H2z" fill="none" stroke="#ffdd57" stroke-width="1"/>
+                    <path d="M2 2l6 6 6-6"/>
+                </svg>
+                Contact
+            </a></li>
+            <li><a href="/news-hub" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M2 2h12v12H2z" fill="none" stroke="#ffdd57" stroke-width="1"/>
+                    <path d="M2 2l6 6 6-6"/>
+                </svg>
+                News Hub
+            </a></li>
+            <li><a href="/services" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <circle cx="8" cy="8" r="3"/>
+                    <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.5 3.5l1.5 1.5M11 11l1.5 1.5M3.5 12.5l1.5-1.5M11 5l1.5-1.5"/>
+                </svg>
+                Services
+            </a></li>
+            <li><a href="/history" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM8 4v4l3 1"/>
+                </svg>
+                History
+            </a></li>
+            <li id="nav-create-post" style="display:none;"><a href="/create-post" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M15.854.146a.5.5 0 0 0-.707 0L.146 15.146a.5.5 0 0 0 .707.708L6 11.207V14.5a.5.5 0 0 0 1 0v-3.293l5.146 5.147a.5.5 0 0 0 .708-.707L6.707 10.5H14.5a.5.5 0 0 0 0-1H6.707l9.147-9.146a.5.5 0 0 0 0-.708z"/>
+                </svg>
+                Create Post
+            </a></li>
+            <li id="nav-create-album" style="display:none;"><a href="/create-album" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M4 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H9.5L7 1H4zm3 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                    <path d="M8 7a3 3 0 0 1 3 3v1H5v-1a3 3 0 0 1 3-3z"/>
+                </svg>
+                Create Album
+            </a></li>
+            <li><a href="/gallery" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M4 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H4z"/>
+                    <path d="M4 4h8v2H4z"/>
+                </svg>
+                Gallery
+            </a></li>
+            <li><a href="/members" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path d="M2 14s1-1 6-1 6 1 6 1v1H2v-1z"/>
+                </svg>
+                Members
+            </a></li>
+            <li id="nav-login"><a href="/login" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M6 2a1 1 0 0 0-1 1v2h1v-2h6v10H6v-2H5v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H6z"/>
+                    <path d="M3 8l3-3v2h4v2H6v2L3 8z"/>
+                </svg>
+                Login
+            </a></li>
+            <li id="nav-register"><a href="/register" onclick="closeMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M8 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    <path d="M2 14s1-1 6-1 6 1 6 1v1H2v-1z"/>
+                </svg>
+                Register
+            </a></li>
+            <li id="nav-logout" style="display:none;"><a href="#" onclick="logout(); return false;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ffdd57" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+                    <path d="M6 2a1 1 0 0 0-1 1v2h1v-2h6v10H6v-2H5v2a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H6z"/>
+                    <path d="M3 8l3-3v2h4v2H6v2L3 8z"/>
+                </svg>
+                Logout
+            </a></li>
+        </ul>
+    </nav>
+</header>
+<script>
+    // Hamburger menu toggle
+    document.getElementById('hamburger-btn').addEventListener('click', function(event) {
+        event.stopPropagation();
+        const nav = document.getElementById('nav-menu');
+        const hamburger = document.getElementById('hamburger-btn');
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+        hamburger.setAttribute('aria-expanded', !expanded);
+        nav.classList.toggle('active');
+    });
+    // Close menu when clicking a link (for better UX)
+    function closeMenu() {
+        const nav = document.getElementById('nav-menu');
+        const hamburger = document.getElementById('hamburger-btn');
+        hamburger.setAttribute('aria-expanded', false);
+        nav.classList.remove('active');
+    }
+    async function checkAuth() {
+        try {
+            const response = await fetch('/api/check-auth');
+            const data = await response.json();
+            if (data.authenticated) {
+                document.getElementById('nav-create-post').style.display = 'list-item';
+                document.getElementById('nav-create-album').style.display = 'list-item';
+                document.getElementById('nav-login').style.display = 'none';
+                document.getElementById('nav-register').style.display = 'none';
+                document.getElementById('nav-logout').style.display = 'list-item';
+            } else {
+                document.getElementById('nav-create-post').style.display = 'none';
+                document.getElementById('nav-create-album').style.display = 'none';
+                document.getElementById('nav-login').style.display = 'list-item';
+                document.getElementById('nav-register').style.display = 'list-item';
+                document.getElementById('nav-logout').style.display = 'none';
+            }
+        } catch (error) {
+            console.error('Error checking auth status:', error);
+        }
+    }
+    async function logout() {
+        try {
+            const response = await fetch('/api/logout', { method: 'POST' });
+            const data = await response.json();
+            if (data.status === 'success') {
+                window.location.href = '/';
+            } else {
+                alert('Logout failed.');
+            }
+        } catch (error) {
+            alert('An error occurred during logout.');
+        }
+    }
+    window.addEventListener('DOMContentLoaded', checkAuth);
+</script>

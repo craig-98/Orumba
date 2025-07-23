@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create Album</title>
+  <link rel="stylesheet" href="/static/futuristic-theme.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">&#9776;</button>
+      <ul id="nav-menu" class="nav-menu">
+        <li><a href="/" onclick="closeMenu()">Home</a></li>
+        <li><a href="/members" onclick="closeMenu()">Members</a></li>
+        <li><a href="/news-hub">News Hub</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/history">History</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Create Album</h1>
+    <form id="albumForm" enctype="multipart/form-data">
+      <div id="postsContainer">
+        <div class="post-entry">
+          <label>Caption: <input type="text" name="caption" /></label><br />
+          <label>Image: <input type="file" name="image" accept="image/*" required /></label>
+        </div>
+      </div>
+      <button type="button" id="addPostBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+          <path d="M8 1a.5.5 0 0 1 .5.5v6.5H15a.5.5 0 0 1 0 1H8.5v6.5a.5.5 0 0 1-1 0V9.5H1a.5.5 0 0 1 0-1h6.5V1.5A.5.5 0 0 1 8 1z"/>
+        </svg>
+        Add Another Image
+      </button><br /><br />
+      <button type="submit">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true" focusable="false" style="vertical-align: middle; margin-right: 6px;">
+          <path d="M4 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H9.5L7 1H4zm3 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+          <path d="M8 7a3 3 0 0 1 3 3v1H5v-1a3 3 0 0 1 3-3z"/>
+        </svg>
+        Create Album
+      </button>
+    </form>
+  </main>
+  <script>
+    const baseUrl = window.location.origin;
+
+    document.getElementById('addPostBtn').addEventListener('click', () => {
+      const postsContainer = document.getElementById('postsContainer');
+      const newPost = document.createElement('div');
+      newPost.className = 'post-entry';
+      newPost.innerHTML = `
+        <label>Caption: <input type="text" name="caption" /></label><br />
+        <label>Image: <input type="file" name="image" accept="image/*" required /></label>
+      `;
+      postsContainer.appendChild(newPost);
+    });
+
+    document.getElementById('albumForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+
+      const captions = [];
+      const images = [];
+
+      const postEntries = form.querySelectorAll('.post-entry');
+      for (const entry of postEntries) {
+        const captionInput = entry.querySelector('input[name="caption"]');
+        const imageInput = entry.querySelector('input[name="image"]');
+        if (imageInput.files.length === 0) {
+          alert('Please select an image for all posts.');
+          return;
+        }
+        captions.push(captionInput.value);
+        images.push(imageInput.files[0]);
+      }
+
+      // Upload images one by one and collect URLs
+      const uploadedImageUrls = [];
+      for (let i = 0; i < images.length; i++) {
+        const imageFormData = new FormData();
+        imageFormData.append('image', images[i]);
+        const res = await fetch(baseUrl + '/api/upload-image', {
+          method: 'POST',
+          body: imageFormData
+        });
+        const data = await res.json();
+        if (data.status !== 'success') {
+          alert('Image upload failed: ' + data.message);
+          return;
+        }
+        uploadedImageUrls.push(data.url);
+      }
+
+      // Prepare album posts data
+      const albumPosts = uploadedImageUrls.map((url, idx) => ({
+        image_url: url,
+        caption: captions[idx] || '',
+        content: 'Image post' // placeholder content
+      }));
+
+      // Send album creation request
+      const response = await fetch(baseUrl + '/api/albums', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ posts: albumPosts })
+      });
+      const result = await response.json();
+      if (result.status === 'success') {
+        alert('Album created successfully!');
+        window.location.href = '/gallery';
+      } else {
+        alert('Failed to create album: ' + result.message);
+      }
+    });
+  </script>
+</body>
+</html>
