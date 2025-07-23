@@ -65,9 +65,6 @@ def login_required(f):
 load_posts()
 load_users()
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-HTML_DIR = os.path.join(BASE_DIR, 'app', 'templates')
-
 @app.route('/')
 def serve_home():
     return render_template('home.html')
@@ -219,9 +216,25 @@ def upload_image():
 
     filename = secure_filename(image.filename)
     upload_folder = os.path.join(BASE_DIR, 'static', 'uploads')
-    os.makedirs(upload_folder, exist_ok=True)
+
+    # Debug prints to help track path and permission issues
+    print("BASE_DIR =", BASE_DIR)
+    print("Upload folder =", upload_folder)
+    print("Filename to save:", filename)
+
+    try:
+        os.makedirs(upload_folder, exist_ok=True)
+    except Exception as e:
+        print("Failed to create upload folder:", e)
+        return jsonify({'status': 'error', 'message': 'Failed to create upload folder'}), 500
+
     filepath = os.path.join(upload_folder, filename)
-    image.save(filepath)
+
+    try:
+        image.save(filepath)
+    except Exception as e:
+        print("Failed to save image:", e)
+        return jsonify({'status': 'error', 'message': 'Failed to save image'}), 500
 
     url = url_for('static', filename=f'uploads/{filename}', _external=True)
     return jsonify({'status': 'success', 'url': url})
@@ -254,4 +267,4 @@ def serve_news_hub():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=False)
+    app.run(host='0.0.0.0', port=port, debug=True)
