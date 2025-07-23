@@ -58,5 +58,15 @@
         "content": "Image post"
       }
     ]
+  },
+  {
+    "id": 4,
+    "posts": [
+      {
+        "image_url": "/static/uploads/desktopview.PNG",
+        "caption": "",
+        "content": "Image post"
+      }
+    ]
   }
 ]

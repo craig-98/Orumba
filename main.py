@@ -3,6 +3,7 @@ import os
 import json
 import hashlib
 from functools import wraps
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'), static_url_path='/static', template_folder='app/templates')
 app.secret_key = 'your_secret_key_here'  # Change this to a secure random key in production
@@ -199,6 +200,27 @@ def api_albums():
         return jsonify({'status': 'success', 'album': album}), 201
     else:
         return jsonify({'status': 'success', 'albums': albums})
+    
+@app.route('/api/upload-image', methods=['POST'])
+@login_required
+def upload_image():
+    if 'image' not in request.files:
+        return jsonify({'status': 'error', 'message': 'No image file provided'}), 400
+    image = request.files['image']
+    if image.filename == '':
+        return jsonify({'status': 'error', 'message': 'No selected file'}), 400
+    
+    # Save file securely, e.g.:
+    filename = secure_filename(image.filename)
+    upload_folder = os.path.join(BASE_DIR, 'static', 'uploads')
+    os.makedirs(upload_folder, exist_ok=True)
+    filepath = os.path.join(upload_folder, filename)
+    image.save(filepath)
+    
+    # Return URL for frontend to use
+    url = url_for('static', filename=f'uploads/{filename}', _external=True)
+    return jsonify({'status': 'success', 'url': url})
+
 
 @app.route('/list-static')
 def list_static():
