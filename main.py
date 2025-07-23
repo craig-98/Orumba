@@ -132,6 +132,8 @@ def serve_create_post():
 def serve_create_album():
     return render_template('create_album.html')
 
+from datetime import datetime
+
 @app.route('/api/posts', methods=['GET', 'POST'])
 @login_required
 def api_posts():
@@ -142,7 +144,9 @@ def api_posts():
         if content:
             post = {
                 'id': len(posts) + 1,
-                'content': content
+                'content': content,
+                'username': session.get('username'),  # add username
+                'published_at': datetime.utcnow().isoformat()  # add timestamp
             }
             posts.append(post)
             save_posts()
@@ -151,6 +155,8 @@ def api_posts():
             return jsonify({'status': 'error', 'message': 'Content is required'}), 400
     else:
         return jsonify({'status': 'success', 'posts': posts})
+
+   
 
 @app.route('/api/posts/<int:post_id>', methods=['GET'])
 @login_required
