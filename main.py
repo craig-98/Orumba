@@ -265,6 +265,12 @@ def serve_members():
 def serve_news_hub():
     return render_template('news_hub.html')
 
+@app.route('/api/public/posts', methods=['GET'])
+def api_public_posts():
+    global posts
+    return jsonify({'status': 'success', 'posts': posts})
+
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
