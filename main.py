@@ -192,6 +192,42 @@ def api_albums():
             if not content:
                 return jsonify({'status': 'error', 'message': f'Post {idx+1} content is required'}), 400
             album['posts'].append({
+                'id': idx + 1,
+                'content': content,
+                'caption': caption,
+                'image_url': url_for('static', filename=f'uploads/{content}', _external=False)
+            })
+
+        albums.append(album)
+        return jsonify({'status': 'success', 'album': album}), 201
+
+    else:
+        # 🔥 Ensure all image_url values are present (for older posts)
+        for album in albums:
+            for post in album['posts']:
+                if 'image_url' not in post:
+                    post['image_url'] = url_for('static', filename=f'uploads/{post["content"]}', _external=False)
+        return jsonify({'status': 'success', 'albums': albums})
+
+    global albums
+    if request.method == 'POST':
+        data = request.get_json()
+        album_posts = data.get('posts', [])
+        if not album_posts or len(album_posts) == 0:
+            return jsonify({'status': 'error', 'message': 'Album must contain at least one post'}), 400
+        if len(album_posts) > 10:
+            return jsonify({'status': 'error', 'message': 'Album cannot contain more than 10 posts'}), 400
+        album_id = len(albums) + 1
+        album = {
+            'id': album_id,
+            'posts': []
+        }
+        for idx, post in enumerate(album_posts):
+            content = post.get('content', '')
+            caption = post.get('caption', '')
+            if not content:
+                return jsonify({'status': 'error', 'message': f'Post {idx+1} content is required'}), 400
+            album['posts'].append({
                     'id': idx + 1,
                     'content': content,
                     'caption': caption,
