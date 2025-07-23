@@ -65,7 +65,7 @@ def login_required(f):
 load_posts()
 load_users()
 
-@app.route('/home')
+@app.route('/')
 def serve_home():
     return render_template('home.html')
 
