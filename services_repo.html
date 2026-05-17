@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Services offered by Orumba North Local Government Area — permits, registration, taxes, and more.">
+    <title>Services — Orumba North LGA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/global-theme.css">
+    <link rel="stylesheet" href="/static/css/navbar.css">
+    <link rel="stylesheet" href="/static/css/mobile-global.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background-attachment: fixed;
+            color: white;
+        }
+
+        /* Make all page texts bold and black (per request) */
+        * {
+            font-weight: 800 !important;
+            color: #000 !important;
+        }
+
+        /* Keep SVG icons in brand green */
+        .service-card svg {
+            fill: #22c55e;
+        }
+
+        .services-hero {
+            position: relative;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -75px;
+            padding-top: 75px;
+            text-align: center;
+        }
+        .services-hero h1 { font-size: var(--text-4xl); font-weight: 800; margin-bottom: 0.75rem; }
+        .services-hero p { font-size: var(--text-lg); opacity: 0.9; max-width: 600px; margin: 0 auto; }
+
+        .service-card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .service-card svg {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 1.5rem;
+            fill: #22c55e;
+        }
+        .service-card h3 {
+            font-size: var(--text-xl);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+        .service-card p {
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .contact-links {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+        .contact-links a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .contact-links a:hover {
+            background: #22c55e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(34,197,94,0.4);
+        }
+        .contact-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    {% include '_header.html' %}
+
+    <section class="services-hero">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>Accessible, efficient, and transparent public services for every resident of Orumba North.</p>
+        </div>
+    </section>
+
+    <main class="section-padding" style="padding-top: 1rem;">
+        <div class="container">
+            <div class="grid-responsive-2" style="gap: 1.5rem;">
+
+                <div class="service-card">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" stroke="#22c55e" stroke-width="2" fill="none"/><path d="M20 20h24v4H20zM20 28h24v4H20zM20 36h24v4H20z" fill="#22c55e"/></svg>
+                    <h3>Street Naming Permit</h3>
+                    <p>Apply for official street naming and addressing permits to formalise your property and improve navigation within the LGA.</p>
+                    <div class="contact-links">
+                        <a href="mailto:info@orumba.gov.ng" aria-label="Email about street naming"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                        <a href="tel:+2348054740552" aria-label="Call about street naming"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="12" y="12" width="40" height="40" rx="8" stroke="#22c55e" stroke-width="2" fill="none"/><path d="M20 32h24v4H20zM20 24h24v4H20z" fill="#22c55e"/></svg>
+                    <h3>Birth Registration</h3>
+                    <p>Register births officially through our streamlined process. Obtain birth certificates recognised nationwide for school admission and identification.</p>
+                    <div class="contact-links">
+                        <a href="mailto:info@orumba.gov.ng" aria-label="Email about birth registration"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                        <a href="tel:+2348054740552" aria-label="Call about birth registration"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" stroke="#22c55e" stroke-width="2" fill="none"/><path d="M20 44h24v4H20zM20 36h24v4H20zM20 28h24v4H20z" fill="#22c55e"/></svg>
+                    <h3>Taxes &amp; Levies</h3>
+                    <p>Information and processing for chargeable taxes and levies. Pay your dues conveniently and support local development projects.</p>
+                    <div class="contact-links">
+                        <a href="mailto:info@orumba.gov.ng" aria-label="Email about taxes"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                        <a href="tel:+2348054740552" aria-label="Call about taxes"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" stroke="#22c55e" stroke-width="2" fill="none"/><path d="M20 20h24v4H20zM20 28h24v4H20zM20 36h24v4H20z" fill="#22c55e"/></svg>
+                    <h3>Marriage Registration</h3>
+                    <p>Formalise your union with an official marriage certificate issued by the LGA. Our registry staff ensure a smooth and dignified process.</p>
+                    <div class="contact-links">
+                        <a href="mailto:info@orumba.gov.ng" aria-label="Email about marriage registration"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                        <a href="tel:+2348054740552" aria-label="Call about marriage registration"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" stroke="#22c55e" stroke-width="2" fill="none"/><path d="M20 44h24v4H20zM20 32h24v8H20z" fill="#22c55e"/></svg>
+                    <h3>Business Premises Permit</h3>
+                    <p>Register and obtain permits for business operations, including compliance guidance and inspections.</p>
+                    <div class="contact-links">
+                        <a href="mailto:info@orumba.gov.ng" aria-label="Email about business premises permit"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                        <a href="tel:+2348054740552" aria-label="Call about business premises permit"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 20h24v4H20zM20 28h24v4H20zM20 36h24v4H20z" fill="#22c55e"/><circle cx="32" cy="32" r="30" stroke="#22c55e" stroke-width="2" fill="none"/></svg>
+                    <h3>Health &amp; Sanitation Approval</h3>
+                    <p>Permits and approvals for sanitation requirements, waste management, and public health compliance.</p>
+                    <div class="contact-links">
+                        <a href="mailto:info@orumba.gov.ng" aria-label="Email about health and sanitation"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                        <a href="tel:+2348054740552" aria-label="Call about health and sanitation"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="14" width="36" height="36" rx="10" stroke="#22c55e" stroke-width="2" fill="none"/><path d="M22 42V22h20v20z" fill="#22c55e"/></svg>
+                    <h3>Land &amp; Property Documentation</h3>
+                    <p>Support for documentation processes including applications, verifications, and guidance for property-related transactions.</p>
+                    <div class="contact-links">
+                        <a href="mailto:info@orumba.gov.ng" aria-label="Email about land and property documentation"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                        <a href="tel:+2348054740552" aria-label="Call about land and property documentation"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/></svg></a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="22" r="8" fill="#22c55e"/><path d="M18 52c2-14 26-14 28 0" fill="#22c55e"/></svg>
+                    <h3>Community Development Services</h3>
+                    <p>Support for community requests, development approvals, and coordination of local initiatives across wards.</p>
+                    <div class="contact-links">
+                        <a href="mailto:info@orumba.gov.ng" aria-label="Email about community development services"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+                        <a href="tel:+2348054740552" aria-label="Call about community development services"><svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.5a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.24 2.13z"/></svg></a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+
+
+    {% include '_footer.html' %}
+</body>
+</html>
